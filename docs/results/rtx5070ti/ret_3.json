@@ -1,0 +1,219 @@
+{
+  "format": "ninfer_serve_retrieval_v1",
+  "model": "qwen3.8-27b",
+  "document_chars": 378767,
+  "probes": [
+    {
+      "name": "single_needle",
+      "pass": true,
+      "answer": "QZ-7391-KESTREL",
+      "detail": "QZ-7391-KESTREL",
+      "prompt_tokens": 98257,
+      "cache_n": 0,
+      "prompt_n": 98257,
+      "predicted_n": 12,
+      "predicted_per_second": 129.51590921033667,
+      "draft_n": 9,
+      "draft_n_accepted": 9,
+      "wall_seconds": 51.087650690999,
+      "id_slot": 0
+    },
+    {
+      "name": "five_needles",
+      "pass": true,
+      "answer": "ORION=44-A\nVEGA=17-C\nLYRA=92-K\nDRACO=8-D\nPERSEUS=61-F",
+      "detail": {
+        "found": {
+          "ORION": "44-A",
+          "VEGA": "17-C",
+          "LYRA": "92-K",
+          "DRACO": "8-D",
+          "PERSEUS": "61-F"
+        },
+        "expected": {
+          "ORION": "44-A",
+          "VEGA": "17-C",
+          "LYRA": "92-K",
+          "DRACO": "8-D",
+          "PERSEUS": "61-F"
+        }
+      },
+      "prompt_tokens": 98290,
+      "cache_n": 0,
+      "prompt_n": 98290,
+      "predicted_n": 35,
+      "predicted_per_second": 120.74132946125832,
+      "draft_n": 30,
+      "draft_n_accepted": 27,
+      "wall_seconds": 51.452098839996324,
+      "id_slot": 1
+    },
+    {
+      "name": "code_detail",
+      "pass": true,
+      "answer": "BEARING_WINDOW=37; second_field=phase_mdeg; return_type=int",
+      "detail": {
+        "BEARING_WINDOW": "37",
+        "second_field": "phase_mdeg",
+        "return_type": "int"
+      },
+      "prompt_tokens": 98302,
+      "cache_n": 98226,
+      "prompt_n": 76,
+      "predicted_n": 18,
+      "predicted_per_second": 120.85323492865787,
+      "draft_n": 15,
+      "draft_n_accepted": 15,
+      "wall_seconds": 0.4677046409997274,
+      "id_slot": 0
+    },
+    {
+      "name": "decode_at_depth",
+      "pass": true,
+      "answer": "```python\nimport threading\nimport time\nfrom collections import OrderedDict\n\n\nclass ThreadSafeLRUCache:\n    \"\"\"\n    A thread-safe bounded LRU cache with per-entry TTL expiration.\n\n    The cache maintains a maximum number of entries and automatically\n    evicts the least recently used entry when the limit is exceeded.\n    Each entry has an associated Time-To-Live (TTL) in seconds, after which\n    it is considered expired and removed upon access or eviction.\n    \"\"\"\n\n    def __init__(self, max_size: int = 100, default_ttl: float = 60.0):\n        \"\"\"\n        Initialize the cache.\n\n        Args:\n            max_size: Maximum number of entries to keep in the cache.\n            default_ttl: Default TTL in seconds for new entries if not specified.\n        \"\"\"\n        self.max_size = max_size\n        self.default_ttl = default_ttl\n        self._cache = OrderedDict()  # key -> (value, expiry_time)\n        self._lock = threading.Lock()\n\n    def _is_expired(self, expiry_time: float) -> bool:\n        return time.time() >= expiry_time\n\n    def get(self, key, default=None",
+      "detail": {
+        "acceptance": 0.7310924369747899
+      },
+      "prompt_tokens": 98278,
+      "cache_n": 98226,
+      "prompt_n": 52,
+      "predicted_n": 256,
+      "predicted_per_second": 111.93268344889572,
+      "draft_n": 238,
+      "draft_n_accepted": 174,
+      "wall_seconds": 2.556727918999968,
+      "id_slot": 0
+    },
+    {
+      "name": "vision_chart",
+      "pass": true,
+      "answer": "NUMBER=731; CIRCLES=3; SIDE=left",
+      "detail": {
+        "NUMBER": "731",
+        "CIRCLES": "3",
+        "SIDE": "left"
+      },
+      "prompt_tokens": 456,
+      "cache_n": 0,
+      "prompt_n": 456,
+      "predicted_n": 16,
+      "predicted_per_second": 133.95305254493343,
+      "draft_n": 15,
+      "draft_n_accepted": 13,
+      "wall_seconds": 0.46648036500118906,
+      "id_slot": 0
+    }
+  ],
+  "decode": {
+    "draft_n": 238,
+    "draft_n_accepted": 174,
+    "acceptance": 0.7310924369747899,
+    "predicted_per_second": 111.93268344889572
+  },
+  "busy_sample": {
+    "metrics": {
+      "llamacpp:prompt_tokens_total": 196728.0,
+      "llamacpp:prompt_seconds_total": 102.42842,
+      "llamacpp:tokens_predicted_total": 79.0,
+      "llamacpp:tokens_predicted_seconds_total": 0.653609,
+      "llamacpp:requests_processing": 1.0,
+      "llamacpp:requests_deferred": 0.0,
+      "ninfer:requests_total": 3.0,
+      "ninfer:prefix_cache_hit_tokens_total": 98226.0,
+      "ninfer:draft_tokens_total": 54.0,
+      "ninfer:draft_accepted_tokens_total": 51.0,
+      "ninfer:ngram_draft_tokens_total": 0.0,
+      "ninfer:ngram_draft_accepted_tokens_total": 0.0
+    },
+    "slots": [
+      {
+        "checkpoints": [],
+        "id": 0,
+        "is_processing": true,
+        "n_ctx": 102400,
+        "n_prompt_tokens": 98278,
+        "n_prompt_tokens_cache": 98226,
+        "retained": false,
+        "session_digest": "",
+        "speculative": true
+      },
+      {
+        "checkpoints": [
+          {
+            "frontier": 98226,
+            "session_digest": "b93fb2fda7633ee6"
+          },
+          {
+            "frontier": 98283,
+            "session_digest": "1c912ddd4aed3a0e"
+          },
+          {
+            "frontier": 98325,
+            "session_digest": "4e61b8a35bca2122"
+          }
+        ],
+        "id": 1,
+        "is_processing": false,
+        "n_ctx": 102400,
+        "n_prompt_tokens": 98325,
+        "n_prompt_tokens_cache": 98325,
+        "retained": true,
+        "session_digest": "4e61b8a35bca2122",
+        "speculative": true
+      }
+    ]
+  },
+  "slots_idle": {
+    "checkpoints": [
+      {
+        "frontier": 98271,
+        "session_digest": "c728782e48cdbf58"
+      },
+      {
+        "frontier": 98534,
+        "session_digest": "876758dceb02888f"
+      }
+    ],
+    "id": 0,
+    "is_processing": false,
+    "n_ctx": 102400,
+    "n_prompt_tokens": 98534,
+    "n_prompt_tokens_cache": 98534,
+    "retained": true,
+    "session_digest": "876758dceb02888f",
+    "speculative": true
+  },
+  "retained_slots": [
+    {
+      "id": 0,
+      "retained": true,
+      "n_prompt_tokens": 472,
+      "session_digest": "1badbeb87113c191"
+    },
+    {
+      "id": 1,
+      "retained": true,
+      "n_prompt_tokens": 98325,
+      "session_digest": "4e61b8a35bca2122"
+    }
+  ],
+  "metrics_deltas": {
+    "llamacpp:prompt_tokens_total": 197131.0,
+    "llamacpp:prompt_seconds_total": 102.649329,
+    "llamacpp:tokens_predicted_total": 332.0,
+    "llamacpp:tokens_predicted_seconds_total": 2.856218,
+    "ninfer:requests_total": 5.0,
+    "ninfer:prefix_cache_hit_tokens_total": 196452.0,
+    "ninfer:draft_tokens_total": 307.0,
+    "ninfer:draft_accepted_tokens_total": 238.0
+  },
+  "metrics_expected": {
+    "llamacpp:prompt_tokens_total": 197131,
+    "ninfer:prefix_cache_hit_tokens_total": 196452,
+    "ninfer:requests_total": 5,
+    "ninfer:draft_tokens_total": 307,
+    "ninfer:draft_accepted_tokens_total": 238
+  },
+  "metrics_ok": true,
+  "all_pass": true
+}
