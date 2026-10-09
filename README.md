@@ -1,3 +1,5 @@
+> **Fork RTX 5070 Ti (sm_120a):** ver [README-5070ti.md](README-5070ti.md)
+
 # NInfer-4080
 
 **Qwen3.8-27B on a single 16 GB RTX 4080, at 100K context, with vision and speculative decoding.**
