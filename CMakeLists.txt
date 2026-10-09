@@ -6,9 +6,9 @@ cmake_minimum_required(VERSION 3.28)
 if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
   set(CMAKE_CUDA_ARCHITECTURES 89 CACHE STRING "CUDA architectures to build")
 endif()
-if(NOT CMAKE_CUDA_ARCHITECTURES STREQUAL "89")
+if(NOT CMAKE_CUDA_ARCHITECTURES MATCHES "^(89|120a)$")
   message(FATAL_ERROR
-    "NInfer supports only CMAKE_CUDA_ARCHITECTURES=89; got "
+    "NInfer supports only CMAKE_CUDA_ARCHITECTURES=89 or 120a; got "
     "'${CMAKE_CUDA_ARCHITECTURES}'")
 endif()
 

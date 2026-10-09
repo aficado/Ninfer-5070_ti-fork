@@ -32,7 +32,11 @@ inline constexpr std::int32_t kBf16GdnReferenceMultiprocessorCount = 128;
 
 // RTX 4080: the smallest sm_89 device this fork supports. The route catalog must remain launchable
 // here through token-tile partitioning.
-inline constexpr std::int32_t kBf16GdnMinimumMultiprocessorCount = 76;
+#if defined(NINFER_SM86)
+inline constexpr std::int32_t kBf16GdnMinimumMultiprocessorCount = 76;  // RTX 4080
+#else
+inline constexpr std::int32_t kBf16GdnMinimumMultiprocessorCount = 70;  // RTX 5070 Ti (sm_120a)
+#endif
 
 // Resident CTAs per SM of one cooperative split-K specialization; 0 marks a specialization that is
 // not launched cooperatively.

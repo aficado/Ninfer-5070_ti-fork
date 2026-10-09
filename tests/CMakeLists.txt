@@ -455,7 +455,7 @@ target_include_directories(ninfer_test_e8_codec PRIVATE
   ${PROJECT_SOURCE_DIR}/src/ops/kernel
   ${PROJECT_SOURCE_DIR}/include)
 target_link_libraries(ninfer_test_e8_codec PRIVATE CUDA::cudart)
-set_target_properties(ninfer_test_e8_codec PROPERTIES CUDA_ARCHITECTURES "89")
+set_target_properties(ninfer_test_e8_codec PROPERTIES CUDA_ARCHITECTURES "${CMAKE_CUDA_ARCHITECTURES}")
 # The testbed carries its own reference implementation of the E8 mathematics and does not
 # include src/ops/kernel/e8_root_codec.cuh, so this is an algorithm oracle, not coverage of
 # the shipped codec. ninfer_e8_root_codec_test below drives the production header.

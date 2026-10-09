@@ -748,8 +748,8 @@ void validate_target_options(DeviceContext& device, const EngineOptions& options
             throw std::invalid_argument("n-gram pool size must be in [4 B,4 GiB]");
         }
     }
-    if (device.compute_capability() != 89) {
-        throw std::invalid_argument("Qwen3.6 family runtime requires compute capability 8.9");
+    if (device.compute_capability() != 89 && device.compute_capability() != 120) {
+        throw std::invalid_argument("Qwen3.6 family runtime requires compute capability 8.9 or 12.0");
     }
     // Upstream's NVFP4-valued KV modes need FP4 tensor cores; the sm_89 build carries their
     // kernels only as stubs (ops/nvfp4_sm86_stubs.cpp), so refuse them before any allocation.
